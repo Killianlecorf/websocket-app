@@ -5,7 +5,8 @@
   "scripts": {
     "start": "tsc && node dist/server.js",
     "dev": "ts-node src/server.ts",
-    "client": "ts-node src/client.ts"
+    "client": "ts-node src/client.ts",
+    "test": "ts-node src/runner.ts"
   },
   "keywords": [],
   "author": "",
