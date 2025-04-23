@@ -16,12 +16,10 @@ wss.on('connection', (ws) => {
         const serverMsg: ServerMessage = {
           type: 'broadcast',
           sender: msg.sender,
-          timestamp: Date.now(),
-          text: msg.text,
+          timestamp: Date.now()
         };
 
         broadcast(serverMsg);
-        console.log(`[>] Broadcasted: ${msg.text}`);
       }
     } catch (err) {
       console.error('[!] Invalid message format', err);
