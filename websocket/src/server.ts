@@ -1,14 +1,27 @@
-import WebSocket, { WebSocketServer } from 'ws';
+import { WebSocketServer } from 'ws';
 import { addClient, broadcast } from './clientManager';
 import { ClientMessage, ServerMessage } from '../types/types';
 
 const wss = new WebSocketServer({ port: 8080 });
+
+let messagesPerSecond = 0;
+
+setInterval(() => {
+
+  if (messagesPerSecond > 0) {
+    console.log(`Messages par seconde (gRPC): ${messagesPerSecond}`);
+  }
+
+  messagesPerSecond = 0;
+}, 1000);
 
 wss.on('connection', (ws) => {
   console.log('[+] Client connected');
   addClient(ws);
 
   ws.on('message', (data) => {
+    messagesPerSecond++;
+
     try {
       const msg: ClientMessage = JSON.parse(data.toString());
 
@@ -27,4 +40,4 @@ wss.on('connection', (ws) => {
   });
 });
 
-console.log('✅ WebSocket server started on ws://localhost:8080');
+console.log('WebSocket server started on ws://localhost:8080');

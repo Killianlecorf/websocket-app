@@ -1,97 +1,147 @@
-# websocket-app
 
-# 📘 Documentation – Comparaison WebSocket vs gRPC
+# Lancer le Projet
 
-## 🎯 Objectif
+## Étape 1 : Démarrer le service gRPC
 
-Ce projet a pour but de comparer deux technologies de communication temps réel côté serveur : **WebSocket** et **gRPC**. L’analyse s’appuie sur un applicatif développé et exécuté dans un environnement Docker, permettant de tester la performance et les comportements de chaque protocole dans différents cas d’usage.
+1. Ouvrir un terminal.
+2. Aller dans le dossier `grpc` :
+
+```bash
+   cd grpc
+```
+
+3. Lancer le service avec Docker Compose :
+
+```bash
+   docker compose up -d --build
+```
+
+## Étape 2 : Démarrer le service WebSocket
+
+1. Ouvrir un terminal.
+2. Aller dans le dossier `websocket` :
+
+```bash
+   cd websocket
+```
+
+3. Lancer le service avec Docker Compose :
+
+```bash
+    docker compose up -d --build
+```
+
+## Arrêter les services
+
+Pour arrêter les services :
+
+```bash
+    docker-compose down
+```
+
+À faire dans chaque dossier (grpc et websocket).
 
 ---
 
-## 🛠️ Technologies utilisées
+# Documentation – Comparaison WebSocket vs gRPC
 
-- **WebSocket (Node.js avec `ws`)**
-- **gRPC (Go avec `grpc-go`)**
+## WebSocket et GRPC: Présentation et Fonctionnement
+
+### Qu'est-ce que WebSocket ?
+
+Le WebSocket est un protocole de communication réseau qui permet d'établir une connexion bidirectionnelle persistante entre un client (comme un navigateur web) et un serveur. Contrairement au protocole HTTP, qui fonctionne sur un modèle requête/réponse, WebSocket permet au serveur d'envoyer des données au client à tout moment, sans que celui-ci ait besoin de faire une nouvelle requête.
+
+Cela le rend particulièrement adapté pour les applications en temps réel comme les chats en ligne, les jeux multi-joueurs, les tableaux de bord dynamiques ou les notifications instantanées.
+
+#### Avantages 
+
+- **Temps réel:** communication instantanée dans les deux sens (client ↔ serveur).
+
+- **Connexion persistante:** une seule connexion TCP ouverte, évite les multiples requêtes HTTP.
+
+- **Faible latence:** idéal pour les applis réactives comme les chats ou jeux en ligne.
+
+- **Simplicité d’implémentation** dans les navigateurs modernes
+
+#### Inconvénients
+
+- Moins standardisé pour la gestion des erreurs et des contrats d'API (vs REST/gRPC).
+
+- Pas de typage fort : pas de vérification automatique des messages échangés.
+
+- Moins adapté pour les systèmes très structurés ou à grande échelle (maintenabilité).
+
+- Sécurité à gérer manuellement (auth, validation, etc.).
+
+#### Cas d'utilisation
+
+WebSocket est particulièrement adapté aux applications qui nécessitent une communication en temps réel entre le client et le serveur. Voici quelques exemples concrets:
+
+- **Applications de messagerie instantanée:** pour permettre des échanges de messages sans latence entre utilisateurs.
+
+### Qu'est-ce que le GRPC ?
+
+gRPC (Google Remote Procedure Call) est un framework de communication hautement performant et open-source qui permet à des applications distribuées de communiquer entre elles via des appels de fonctions distants, comme si elles étaient locales.
+
+Basé sur le protocole HTTP/2 et utilisant Protocol Buffers (protobuf) comme format de sérialisation, gRPC est idéal pour les architectures microservices, grâce à sa rapidité, sa faible latence, et son support natif du streaming bidirectionnel.
+
+#### Avantages 
+
+- **Performant et efficace:** rapide, léger, basé sur HTTP/2 et protobuf.
+
+- **Typage fort avec Protocol Buffers:** fiabilité des échanges + génération automatique de code.
+
+- **Streaming natif:** gère le flux de données en continu dans les deux sens.
+
+- **Multi-langages:** facile à intégrer dans des systèmes polyglottes.
+
+- ***Sécurisé:** support natif de TLS.
+
+#### Inconvénients
+
+- Plus complexe à mettre en place que REST ou WebSocket.
+
+- Moins accessible depuis les navigateurs (pas de support natif sans proxy ou wrapper).
+
+- Dépendance aux fichiers .proto : nécessite une gestion du schéma centralisé.
+
+- Débogage moins intuitif que les API REST (messages binaires, pas lisibles directement).
+
+#### Cas d'utilisation
+
+gRPC est conçu pour les communications performantes, structurées et sécurisées entre services. Il est souvent utilisé dans les architectures modernes à base de microservices. Exemples:
+
+- **Échange de données entre microservices:** gRPC permet des appels rapides et typés entre services backend.
+
+---
+
+## Objectif des applications
+
+Ce projet permet comparer deux technologies de communication en temps réel : **WebSocket** et **gRPC**. L’analyse s’appuie sur deux applicatif développé en Nodejs et démarré sur un environnement Docker, elle permet de tester la performance et de comprendre chaque protocole dans différents cas d’utilisation.
+
+## Technologies utilisées
+
+- **WebSocket (Node.js + `ws`)**
+- **gRPC (Node.js + `grpc-go`)**
 - **Docker / Docker Compose**
-- **wrk** pour les benchmarks de performance
 
----
-
-## ⚙️ Description des applicatifs
-
-### WebSocket
-
-- Serveur WebSocket en Node.js
-- Échange de messages JSON (simulant des données temps réel)
-- Testé avec des clients simulés connectés en parallèle
-
-### gRPC
-
-- Serveur gRPC en Go
-- Messages au format Protobuf
-- Méthodes utilisées : `Unary` et `Bidirectional streaming`
-
----
 
 ## 📊 Résultats de performance
 
 | Critère                   | WebSocket            | gRPC                      |
 |--------------------------|----------------------|---------------------------|
-| Latence moyenne          | 15 ms                | 5 ms                      |
-| Débit (messages/sec)     | ~6 000               | ~11 000                   |
-| Consommation CPU         | moyenne (30-40%)     | plus élevée (~50-60%)     |
-| Gestion de connexions    | Simple, scalable     | Complexe mais optimisée   |
+| Latence moyenne          | 787 ms               | 0.68 ms                  |
+| Débit (messages/sec)     | ~50 000              | ~11 000                   |
+| Idéal pour               | Jeux, chats simples  | Microservices, streamings  |
 
-> _Tests réalisés sur un poste local avec 1000 clients simulés_
+> _Tests réalisés sur un poste local avec un clients simulés qui envoie 100 000 messages_
 
----
+## Observation
 
-## ✅ Avantages et inconvénients
+Ce phénomène est normal et s'explique par la différence fondamentale entre WebSocket et gRPC.
 
-### WebSocket
+1. WebSocket: léger et rapide
+WebSocket utilise TCP avec peu de surcharges. Les messages sont envoyés sous forme brute (texte ou buffer) sans encodage complexe ni validation stricte. Cela permet d'atteindre des débits très élevés, avec un traitement immédiat, mais au prix d’une latence plus élevée.
 
-#### Avantages
-
-- Simplicité de mise en place (surtout en Node.js)
-- Communication bidirectionnelle native
-- Très bon support navigateur
-
-#### Inconvénients
-
-- Pas de typage fort : JSON = erreurs possibles
-- Moins optimisé pour la performance brute
-- Pas de support natif pour la définition de services
-
-#### Use cases
-
-- Chat en temps réel
-- Jeux en ligne multijoueur
-- Dashboard live
-
----
-
-### gRPC
-
-#### Avantages
-
-- Très performant (basé sur HTTP/2 et Protobuf)
-- Fort typage : erreurs détectées à la compilation
-- Supporte les 4 types de communication : unary, server/client/bidirectional streaming
-
-#### Inconvénients
-
-- Moins simple à déployer avec des clients navigateurs (besoin de proxy ou gRPC-web)
-- Courbe d’apprentissage plus raide
-- Moins flexible pour les cas très dynamiques côté client
-
-#### Use cases
-
-- Communication inter-services (microservices)
-- Streaming de données en temps réel backend
-- API performantes à forte charge
-
----
-
-## 🐳 Dockerisation
-
-
+2. gRPC: structuré et fiable
+gRPC repose sur HTTP/2 et Protobuf, qui imposent des étapes supplémentaires d'encodage, de vérification et de gestion du flux. Ces mesures assurent fiabilité et latence faible, mais ralentissent le nombre de messages envoyés par seconde, car chaque message est plus « lourd » à traiter.
