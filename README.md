@@ -136,3 +136,12 @@ Ce projet permet comparer deux technologies de communication en temps réel : **
 
 > _Tests réalisés sur un poste local avec un clients simulés qui envoie 100 000 messages_
 
+## Observation
+
+Ce phénomène est normal et s'explique par la différence fondamentale entre WebSocket et gRPC.
+
+1. WebSocket: léger et rapide
+WebSocket utilise TCP avec peu de surcharges. Les messages sont envoyés sous forme brute (texte ou buffer) sans encodage complexe ni validation stricte. Cela permet d'atteindre des débits très élevés, avec un traitement immédiat, mais au prix d’une latence plus élevée.
+
+2. gRPC: structuré et fiable
+gRPC repose sur HTTP/2 et Protobuf, qui imposent des étapes supplémentaires d'encodage, de vérification et de gestion du flux. Ces mesures assurent fiabilité et latence faible, mais ralentissent le nombre de messages envoyés par seconde, car chaque message est plus « lourd » à traiter.
