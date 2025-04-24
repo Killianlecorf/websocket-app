@@ -12,7 +12,11 @@ const chatPackage = grpcObject.chat;
 let messagesPerSecond = 0;
 
 setInterval(() => {
-  console.log(`Messages par seconde (gRPC): ${messagesPerSecond}`);
+
+  if (messagesPerSecond > 0) {
+    console.log(`[📊] Messages par seconde (gRPC): ${messagesPerSecond}`);
+  }
+
   messagesPerSecond = 0;
 }, 1000);
 
