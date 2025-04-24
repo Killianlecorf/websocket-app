@@ -148,8 +148,6 @@ elle permet de tester la performance et de comprendre chaque protocole dans diff
 
 ## Observation
 
-Ce phénomène est normal et s'explique par la différence fondamentale entre WebSocket et gRPC.
-
 1. WebSocket: léger et rapide
 WebSocket utilise TCP avec peu de surcharges. Les messages sont envoyés sous forme brute (texte ou buffer) sans encodage complexe 
 ni validation stricte. Cela permet d'atteindre des débits très élevés, avec un traitement immédiat, mais au prix d’une latence 
