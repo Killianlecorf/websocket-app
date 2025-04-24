@@ -41,6 +41,7 @@ Pour arrêter les services :
 
 À faire dans chaque dossier (grpc et websocket).
 
+---
 
 # Documentation – Comparaison WebSocket vs gRPC
 
