@@ -9,8 +9,16 @@ const packageDef = protoLoader.loadSync(PROTO_PATH);
 const grpcObject = grpc.loadPackageDefinition(packageDef) as any;
 const chatPackage = grpcObject.chat;
 
+let messagesPerSecond = 0;
+
+setInterval(() => {
+  console.log(`Messages par seconde (gRPC): ${messagesPerSecond}`);
+  messagesPerSecond = 0;
+}, 1000);
+
 function chat(call: any) {
   call.on('data', (msg: any) => {
+    messagesPerSecond++;
     const response = {
       sender: msg.sender,
       timestamp: Date.now(),
