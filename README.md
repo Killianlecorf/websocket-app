@@ -49,9 +49,13 @@ Pour arrêter les services :
 
 ### Qu'est-ce que WebSocket ?
 
-Le WebSocket est un protocole de communication réseau qui permet d'établir une connexion bidirectionnelle persistante entre un client (comme un navigateur web) et un serveur. Contrairement au protocole HTTP, qui fonctionne sur un modèle requête/réponse, WebSocket permet au serveur d'envoyer des données au client à tout moment, sans que celui-ci ait besoin de faire une nouvelle requête.
+Le WebSocket est un protocole de communication réseau qui permet d'établir une connexion bidirectionnelle persistante entre un 
+client (comme un navigateur web) et un serveur. Contrairement au protocole HTTP, qui fonctionne sur un modèle requête/réponse, 
+WebSocket permet au serveur d'envoyer des données au client à tout moment, sans que celui-ci ait besoin de faire une nouvelle 
+requête.
 
-Cela le rend particulièrement adapté pour les applications en temps réel comme les chats en ligne, les jeux multi-joueurs, les tableaux de bord dynamiques ou les notifications instantanées.
+Cela le rend particulièrement adapté pour les applications en temps réel comme les chats en ligne, les jeux multi-joueurs, les 
+tableaux de bord dynamiques ou les notifications instantanées.
 
 #### Avantages 
 
@@ -75,15 +79,18 @@ Cela le rend particulièrement adapté pour les applications en temps réel comm
 
 #### Cas d'utilisation
 
-WebSocket est particulièrement adapté aux applications qui nécessitent une communication en temps réel entre le client et le serveur. Voici quelques exemples concrets:
+WebSocket est particulièrement adapté aux applications qui nécessitent une communication en temps réel entre le client et le 
+serveur. Voici quelques exemples concrets:
 
 - **Applications de messagerie instantanée:** pour permettre des échanges de messages sans latence entre utilisateurs.
 
 ### Qu'est-ce que le GRPC ?
 
-gRPC (Google Remote Procedure Call) est un framework de communication hautement performant et open-source qui permet à des applications distribuées de communiquer entre elles via des appels de fonctions distants, comme si elles étaient locales.
+gRPC (Google Remote Procedure Call) est un framework de communication hautement performant et open-source qui permet à des 
+applications distribuées de communiquer entre elles via des appels de fonctions distants, comme si elles étaient locales.
 
-Basé sur le protocole HTTP/2 et utilisant Protocol Buffers (protobuf) comme format de sérialisation, gRPC est idéal pour les architectures microservices, grâce à sa rapidité, sa faible latence, et son support natif du streaming bidirectionnel.
+Basé sur le protocole HTTP/2 et utilisant Protocol Buffers (protobuf) comme format de sérialisation, gRPC est idéal pour les 
+architectures microservices, grâce à sa rapidité, sa faible latence, et son support natif du streaming bidirectionnel.
 
 #### Avantages 
 
@@ -109,7 +116,8 @@ Basé sur le protocole HTTP/2 et utilisant Protocol Buffers (protobuf) comme for
 
 #### Cas d'utilisation
 
-gRPC est conçu pour les communications performantes, structurées et sécurisées entre services. Il est souvent utilisé dans les architectures modernes à base de microservices. Exemples:
+gRPC est conçu pour les communications performantes, structurées et sécurisées entre services. Il est souvent utilisé dans les 
+architectures modernes à base de microservices. Exemples:
 
 - **Échange de données entre microservices:** gRPC permet des appels rapides et typés entre services backend.
 
@@ -117,7 +125,9 @@ gRPC est conçu pour les communications performantes, structurées et sécurisé
 
 ## Objectif des applications
 
-Ce projet permet comparer deux technologies de communication en temps réel : **WebSocket** et **gRPC**. L’analyse s’appuie sur deux applicatif développé en Nodejs et démarré sur un environnement Docker, elle permet de tester la performance et de comprendre chaque protocole dans différents cas d’utilisation.
+Ce projet permet comparer deux technologies de communication en temps réel : 
+**WebSocket** et **gRPC**. L’analyse s’appuie sur deux applicatif développé en Nodejs et démarré sur un environnement Docker, 
+elle permet de tester la performance et de comprendre chaque protocole dans différents cas d’utilisation.
 
 ## Technologies utilisées
 
@@ -138,10 +148,12 @@ Ce projet permet comparer deux technologies de communication en temps réel : **
 
 ## Observation
 
-Ce phénomène est normal et s'explique par la différence fondamentale entre WebSocket et gRPC.
-
 1. WebSocket: léger et rapide
-WebSocket utilise TCP avec peu de surcharges. Les messages sont envoyés sous forme brute (texte ou buffer) sans encodage complexe ni validation stricte. Cela permet d'atteindre des débits très élevés, avec un traitement immédiat, mais au prix d’une latence plus élevée.
+WebSocket utilise TCP avec peu de surcharges. Les messages sont envoyés sous forme brute (texte ou buffer) sans encodage complexe 
+ni validation stricte. Cela permet d'atteindre des débits très élevés, avec un traitement immédiat, mais au prix d’une latence 
+plus élevée.
 
 2. gRPC: structuré et fiable
-gRPC repose sur HTTP/2 et Protobuf, qui imposent des étapes supplémentaires d'encodage, de vérification et de gestion du flux. Ces mesures assurent fiabilité et latence faible, mais ralentissent le nombre de messages envoyés par seconde, car chaque message est plus « lourd » à traiter.
+gRPC repose sur HTTP/2 et Protobuf, qui imposent des étapes supplémentaires d'encodage, de vérification et de gestion du flux. 
+Ces mesures assurent fiabilité et latence faible, mais ralentissent le nombre de messages envoyés par seconde, car chaque message 
+est plus « lourd » à traiter.
