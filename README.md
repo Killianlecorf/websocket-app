@@ -1,4 +1,46 @@
-# websocket-app
+
+# Lancer le Projet
+
+## Étape 1 : Démarrer le service gRPC
+
+1. Ouvrir un terminal.
+2. Aller dans le dossier `grpc` :
+
+```bash
+   cd grpc
+```
+
+3. Lancer le service avec Docker Compose :
+
+```bash
+   docker compose up -d --build
+```
+
+## Étape 2 : Démarrer le service WebSocket
+
+1. Ouvrir un terminal.
+2. Aller dans le dossier `websocket` :
+
+```bash
+   cd websocket
+```
+
+3. Lancer le service avec Docker Compose :
+
+```bash
+    docker compose up -d --build
+```
+
+## Arrêter les services
+
+Pour arrêter les services :
+
+```bash
+    docker-compose down
+```
+
+À faire dans chaque dossier (grpc et websocket).
+
 
 # 📘 Documentation – Comparaison WebSocket vs gRPC
 
