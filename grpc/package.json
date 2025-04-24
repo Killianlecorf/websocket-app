@@ -2,6 +2,7 @@
   "name": "grpc-server",
   "version": "1.0.0",
   "scripts": {
+    "dev": "",
     "dev:server": "ts-node src/server.ts",
     "dev:client": "ts-node src/client.ts",
     "build": "tsc"

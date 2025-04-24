@@ -15,4 +15,4 @@ WORKDIR /app
 COPY --from=builder /app /app
 RUN npm install --omit=dev
 
-CMD ["node", "dist/server.js"]
+CMD ["npm", "dev:server"]
