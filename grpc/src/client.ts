@@ -10,7 +10,7 @@ const chatPackage = grpcObject.chat;
 const client = new chatPackage.ChatService('localhost:50051', grpc.credentials.createInsecure());
 
 const ID = `client-${Math.floor(Math.random() * 1000)}`;
-const TOTAL_MESSAGES = 100;
+const TOTAL_MESSAGES = 100000;
 
 let sent = 0;
 let received = 0;
