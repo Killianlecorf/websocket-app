@@ -42,22 +42,25 @@ Pour arrêter les services :
 À faire dans chaque dossier (grpc et websocket).
 
 
-# 📘 Documentation – Comparaison WebSocket vs gRPC
+# Documentation – Comparaison WebSocket vs gRPC
 
-## 🎯 Objectif
+## Objectif
 
-Ce projet a pour but de comparer deux technologies de communication temps réel côté serveur : **WebSocket** et **gRPC**. L’analyse s’appuie sur un applicatif développé et exécuté dans un environnement Docker, permettant de tester la performance et les comportements de chaque protocole dans différents cas d’usage.
+Ce projet permet comparer deux technologies de communication en temps réel : **WebSocket** et **gRPC**. L’analyse s’appuie sur un applicatif démarré sur un environnement Docker, elle permet de tester la performance et de comprendre chaque protocole dans différents cas d’utilisation.
+
 
 ---
 
-## 🛠️ Technologies utilisées
+
+## Technologies utilisées
 
 - **WebSocket (Node.js avec `ws`)**
-- **gRPC (Go avec `grpc-go`)**
+- **gRPC (Node.js avec `grpc-go`)**
 - **Docker / Docker Compose**
-- **wrk** pour les benchmarks de performance
+
 
 ---
+
 
 ## ⚙️ Description des applicatifs
 
@@ -81,7 +84,6 @@ Ce projet a pour but de comparer deux technologies de communication temps réel 
 |--------------------------|----------------------|---------------------------|
 | Latence moyenne          | 15 ms                | 5 ms                      |
 | Débit (messages/sec)     | ~6 000               | ~11 000                   |
-| Consommation CPU         | moyenne (30-40%)     | plus élevée (~50-60%)     |
 | Gestion de connexions    | Simple, scalable     | Complexe mais optimisée   |
 
 > _Tests réalisés sur un poste local avec 1000 clients simulés_
