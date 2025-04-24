@@ -119,17 +119,11 @@ gRPC est conçu pour les communications performantes, structurées et sécurisé
 
 Ce projet permet comparer deux technologies de communication en temps réel : **WebSocket** et **gRPC**. L’analyse s’appuie sur deux applicatif développé en Nodejs et démarré sur un environnement Docker, elle permet de tester la performance et de comprendre chaque protocole dans différents cas d’utilisation.
 
-
----
-
-
 ## Technologies utilisées
 
 - **WebSocket (Node.js + `ws`)**
 - **gRPC (Node.js + `grpc-go`)**
 - **Docker / Docker Compose**
-
----
 
 
 ## 📊 Résultats de performance
@@ -142,4 +136,3 @@ Ce projet permet comparer deux technologies de communication en temps réel : **
 
 > _Tests réalisés sur un poste local avec un clients simulés qui envoie 100 000 messages_
 
----
