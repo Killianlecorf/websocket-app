@@ -128,9 +128,6 @@ les architectures microservices, grâce à sa rapidité mais aussi grâce sa fai
 
 #### Cas d'utilisation
 
-gRPC est conçu pour les communications performantes, structurées et sécurisées entre services. Il est souvent utilisé dans les 
-architectures modernes à base de microservices. Exemples:
-
 - **Échange de données entre microservices:** gRPC permet des appels rapides et typés entre services backend.
 
 ---
