@@ -70,8 +70,10 @@ Pour arrêter les services :
 ### Qu'est-ce que WebSocket ?
 
 Le WebSocket utilise un protocole de communication réseau qui permettant d'établir une connexion bidirectionnelle entre un 
-client et un serveur, cela permet de pourvoir envoyer et recevoir des informations à tous moment. Contrairement au protocole HTTP, qui fonctionne sur un modèle requête/réponse, 
-Le WebSocket peut envoyé des données serveur au client a tout moment car la connexion ne ce ferme jamais, c'est une méthode appellé le full-duplex.
+client et un serveur, cela permet de pourvoir envoyer et recevoir des informations à tous moment. Contrairement au protocole 
+HTTP, qui fonctionne sur un modèle requête/réponse, le WebSocket peut envoyé des données serveur au client a tout moment car la 
+connexion ne ce ferme jamais, c'est une méthode 
+appellé le full-duplex.
 
 #### Avantages 
 
@@ -93,21 +95,14 @@ Le WebSocket peut envoyé des données serveur au client a tout moment car la co
 
 #### Cas d'utilisation
 
-// TODO
-
-WebSocket est particulièrement adapté aux applications qui nécessitent une communication en temps réel entre le client et le 
-serveur. Voici quelques exemples concrets:
-
 - **Applications de messagerie instantanée:** pour permettre des échanges de messages sans latence entre utilisateurs.
 
 ### Qu'est-ce que le GRPC ?
 
-// TODO
+gRPC est un framework de communication, qui permet à des applications distribuées de communiquer entre elles via des appels de procédures à distance (le RPC).
 
-gRPC est un framework de communication crée par google, open-source, qui permet à des 
-applications distribuées de communiquer entre elles via des appels de procédures à distance (le RPC).
-
-il est basé sur le protocole HTTP/2 et utilisant Protocol Buffers comme format de sérialisation, le gRPC est souvent utilisé pour les architectures microservices, grâce à sa rapidité mais aussi grâce sa faible latence.
+il est basé sur le protocole HTTP/2 et utilisant Protocol Buffers comme format de sérialisation, le gRPC est souvent utilisé pour 
+les architectures microservices, grâce à sa rapidité mais aussi grâce sa faible latence.
 
 #### Avantages 
 
@@ -145,9 +140,10 @@ architectures modernes à base de microservices. Exemples:
 Ce projet permet comparer ces deux technologies de communication en temps réel. Il n'éxiste pas de
 de comparaison de performance publique, alors ces applications sont destiner à montrer le pour et le contre de chacun.
 L’analyse s’appuie sur deux applicatif développé en Nodejs et démarré sur un environnement Docker, 
-elle permet de tester la performance et de comprendre chaque protocole dans ces différents cas d’utilisation. En prenant en compte que cela peut être differents en fonction des languages/technos utilisés.
+elle permet de tester la performance et de comprendre chaque protocole dans ces différents cas d’utilisation. En prenant en 
+compte que cela peut être differents en fonction des languages/technos utilisés.
 
-## 📊 Résultats de performance
+## Résultats de performance
 
 | Critère                  | WebSocket            | gRPC                      |
 |--------------------------|----------------------|---------------------------|
@@ -167,8 +163,10 @@ plus élevée.
 2. gRPC:
 le gRPC reposant sur HTTP/2 et Protobuf, imposent des étapes supplémentaires d'encodage, de vérification et de gestion du flux. 
 Ces mesures assurent fiabilité et latence faible, mais ralentissent le nombre de messages envoyés par seconde, car chaque message 
-est plus « lourd » à traiter.
+est plus « lourd » à traiter. c'est notament pour ca que pour le flux vidéo ce n'est pas le plus optimiser, car le temps de 
+traiter la donner cela donne un temps de traitement trop long donc moins de fps.
 
 ## Conclusion:
 
-Pour conclure, le websocket et le gRPC à chacun leurs particularité et répondent à des besoins différents, le choix dépend finalement plus son besoins.
+Pour conclure, le websocket et le gRPC à chacun leurs particularité et répondent à des besoins différents, le choix dépend 
+finalement plus son besoins.
