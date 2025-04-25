@@ -18,7 +18,13 @@
    cd grpc
 ```
 
-3. Lancer le service avec Docker Compose :
+3. Installer les modules
+
+```bash
+   npm i
+```
+
+4. Lancer le service avec Docker Compose :
 
 ```bash
    docker compose up -d --build
@@ -33,7 +39,13 @@
    cd websocket
 ```
 
-3. Lancer le service avec Docker Compose :
+3. Installer les modules
+
+```bash
+   npm i
+```
+
+4. Lancer le service avec Docker Compose :
 
 ```bash
     docker compose up -d --build
@@ -88,11 +100,10 @@ serveur. Voici quelques exemples concrets:
 
 ### Qu'est-ce que le GRPC ?
 
-gRPC (Google Remote Procedure Call) est un framework de communication crée par google, et open-source, qui permet à des 
-applications distribuées de communiquer entre elles via des appels de fonctions distants, comme si elles étaient locales.
+gRPC (Google Remote Procedure Call) est un framework de communication crée par google, open-source, qui permet à des 
+applications distribuées de communiquer entre elles via des appels de fonctions.
 
-Basé sur le protocole HTTP/2 et utilisant Protocol Buffers comme format de sérialisation, le gRPC est souvent utilisé pour les 
-architectures microservices, grâce à sa rapidité, sa faible latence.
+il est basé sur le protocole HTTP/2 et utilisant Protocol Buffers comme format de sérialisation, le gRPC est souvent utilisé pour les architectures microservices, grâce à sa rapidité mais aussi grâce sa faible latence.
 
 #### Avantages 
 
@@ -144,12 +155,12 @@ elle permet de tester la performance et de comprendre chaque protocole dans ces 
 
 ## Observation
 
-1. WebSocket: léger et rapide
+1. WebSocket:
 WebSocket utilise TCP avec peu de surcharges. Les messages sont envoyés sous forme brute sans encodage complexe 
 ni étapes de validation. Cela permet d'atteindre des débits plus élevés, avec un traitement immédiat, mais au prix d’une latence 
 plus élevée.
 
-2. gRPC: structuré et fiable
+2. gRPC:
 le gRPC reposant sur HTTP/2 et Protobuf, imposent des étapes supplémentaires d'encodage, de vérification et de gestion du flux. 
 Ces mesures assurent fiabilité et latence faible, mais ralentissent le nombre de messages envoyés par seconde, car chaque message 
 est plus « lourd » à traiter.
