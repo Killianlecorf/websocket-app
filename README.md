@@ -85,13 +85,15 @@ Le WebSocket peut envoyé des données serveur au client a tout moment car la co
 
 #### Inconvénients
 
-- Pas de typage native: pas de vérification de typage les informations échangés.
+- Pas de typage native: pas de vérification de typage sur les informations échangés.
 
 - Moins adapté pour les systèmes très structurés ou à grande échelle.
 
-- Sécurité à gérer manuellement.
+- Sécurité à gérer entirement manuellement.
 
 #### Cas d'utilisation
+
+// TODO
 
 WebSocket est particulièrement adapté aux applications qui nécessitent une communication en temps réel entre le client et le 
 serveur. Voici quelques exemples concrets:
@@ -100,16 +102,18 @@ serveur. Voici quelques exemples concrets:
 
 ### Qu'est-ce que le GRPC ?
 
-gRPC (Google Remote Procedure Call) est un framework de communication crée par google, open-source, qui permet à des 
-applications distribuées de communiquer entre elles via des appels de fonctions.
+// TODO
+
+gRPC est un framework de communication crée par google, open-source, qui permet à des 
+applications distribuées de communiquer entre elles via des appels de procédures à distance (le RPC).
 
 il est basé sur le protocole HTTP/2 et utilisant Protocol Buffers comme format de sérialisation, le gRPC est souvent utilisé pour les architectures microservices, grâce à sa rapidité mais aussi grâce sa faible latence.
 
 #### Avantages 
 
-- **Performant et efficace:** rapide, léger, basé sur HTTP/2 et protobuf.
+- **Performant et efficace:** rapide, léger.
 
-- **Typage fort avec Protocol Buffers:** fiabilité des échanges.
+- **Typage fort:** fiabilité des échanges, basé sur HTTP/2 et protobuf.
 
 - **Streaming natif:** gère le flux de données en continu dans les deux sens.
 
